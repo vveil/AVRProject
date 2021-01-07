@@ -72,7 +72,9 @@ crashlytics-build.properties
 /[Aa]ssets/[Ss]treamingAssets/aa/*
 
 # Ignore MapTileGridCreator
-/[Aa]ssets/MapTileGridCreator
+/[Aa]ssets/**.meta
+/[Aa]ssets/MapTileGridCreator/
+/[Aa]ssets/MapTileGridCreator/*
 
 #Visual Studio Code
 Packages/

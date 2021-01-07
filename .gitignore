@@ -72,7 +72,7 @@ crashlytics-build.properties
 /[Aa]ssets/[Ss]treamingAssets/aa/*
 
 # Ignore MapTileGridCreator
-/[Aa]ssets/**.meta
+/[Aa]ssets/MapTileGridCreator.meta
 /[Aa]ssets/MapTileGridCreator/
 /[Aa]ssets/MapTileGridCreator/*
 

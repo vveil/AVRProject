@@ -120,7 +120,7 @@ NavMeshSettings:
     accuratePlacement: 0
     debug:
       m_Flags: 0
-  m_NavMeshData: {fileID: 23800000, guid: 1664f9d2f60a84435814fdcfe3767d8a, type: 2}
+  m_NavMeshData: {fileID: 0}
 --- !u!1 &27047431
 GameObject:
   m_ObjectHideFlags: 0
@@ -544,7 +544,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_CustomReticle: {fileID: 0}
-  m_PlacementPrefab: {fileID: 3397346204195653471, guid: 6189aba89c700468d94b2ceaf03ebf65,
+  m_PlacementPrefab: {fileID: 4795852621716341546, guid: 99d805ed82e8d4c24b3ddba16b01f610,
     type: 3}
   m_OnObjectPlaced:
     m_PersistentCalls:

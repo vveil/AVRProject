@@ -76,6 +76,10 @@ crashlytics-build.properties
 /[Aa]ssets/MapTileGridCreator/
 /[Aa]ssets/MapTileGridCreator/*
 
+# Ignore Hexlands_LowPolyStyle
+/[Aa]ssets/Hexlands_LowPolyStyle.meta
+/[Aa]ssets/Hexlands_LowPolyStyle/
+/[Aa]ssets/Hexlands_LowPolyStyle/*
+
 #Visual Studio Code
 Packages/
-

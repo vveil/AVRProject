@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Selection : MonoBehaviour
 {
+    private bool isTurretActive = false;
 
   //adjust this to change speed
   public float speedswing = 2.5f;
@@ -29,5 +30,15 @@ public class Selection : MonoBehaviour
     //set the object's Y to the new calculated Y
     transform.position = new Vector3(transform.position.x, newY, transform.position.z);
     transform.Rotate(new Vector3(0.0f, 1.0f, 0.0f) * speedrotate * Time.deltaTime);
-  }
+
+        //if(Input.touchCount > 0)
+        //{
+            if (!isTurretActive)
+                {
+                    GameObject gameManager = GameObject.Find("GameManager");
+                    gameManager.GetComponent<GameManager>().instantiateTurret(transform.position);
+                    isTurretActive = true;
+            }
+        //}
+    }
 }

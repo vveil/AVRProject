@@ -1,0 +1,169 @@
+{
+    "_type": 1,
+    "_name": "HexagonalGrid",
+    "_size_cell": 1.0,
+    "_gap": 1.0,
+    "_map": [
+        {
+            "_pathPrefab": "Assets/MapTileGridCreator/Pallets/Hexagonal/Ground.prefab",
+            "_index": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "_localposition": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "_localrotation": {
+                "x": 0.0,
+                "y": 90.0,
+                "z": 0.0
+            },
+            "_localscale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            }
+        },
+        {
+            "_pathPrefab": "Assets/MapTileGridCreator/Pallets/Hexagonal/Ground.prefab",
+            "_index": {
+                "x": 0,
+                "y": 0,
+                "z": 1
+            },
+            "_localposition": {
+                "x": 0.8660253882408142,
+                "y": 0.0,
+                "z": 1.5
+            },
+            "_localrotation": {
+                "x": 0.0,
+                "y": 90.0,
+                "z": 0.0
+            },
+            "_localscale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            }
+        },
+        {
+            "_pathPrefab": "Assets/MapTileGridCreator/Pallets/Hexagonal/Ground.prefab",
+            "_index": {
+                "x": -1,
+                "y": 0,
+                "z": 1
+            },
+            "_localposition": {
+                "x": -0.8660253882408142,
+                "y": 0.0,
+                "z": 1.5
+            },
+            "_localrotation": {
+                "x": 0.0,
+                "y": 90.0,
+                "z": 0.0
+            },
+            "_localscale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            }
+        },
+        {
+            "_pathPrefab": "Assets/MapTileGridCreator/Pallets/Hexagonal/Ground.prefab",
+            "_index": {
+                "x": -1,
+                "y": 0,
+                "z": 0
+            },
+            "_localposition": {
+                "x": -1.7320507764816285,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "_localrotation": {
+                "x": 0.0,
+                "y": 90.0,
+                "z": 0.0
+            },
+            "_localscale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            }
+        },
+        {
+            "_pathPrefab": "Assets/MapTileGridCreator/Pallets/Hexagonal/Ground.prefab",
+            "_index": {
+                "x": 0,
+                "y": 0,
+                "z": -1
+            },
+            "_localposition": {
+                "x": -0.8660253882408142,
+                "y": 0.0,
+                "z": -1.5
+            },
+            "_localrotation": {
+                "x": 0.0,
+                "y": 90.0,
+                "z": 0.0
+            },
+            "_localscale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            }
+        },
+        {
+            "_pathPrefab": "Assets/MapTileGridCreator/Pallets/Hexagonal/Ground.prefab",
+            "_index": {
+                "x": 1,
+                "y": 0,
+                "z": -1
+            },
+            "_localposition": {
+                "x": 0.8660253882408142,
+                "y": 0.0,
+                "z": -1.5
+            },
+            "_localrotation": {
+                "x": 0.0,
+                "y": 90.0,
+                "z": 0.0
+            },
+            "_localscale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            }
+        },
+        {
+            "_pathPrefab": "Assets/MapTileGridCreator/Pallets/Hexagonal/Ground.prefab",
+            "_index": {
+                "x": 1,
+                "y": 0,
+                "z": 0
+            },
+            "_localposition": {
+                "x": 1.7320507764816285,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "_localrotation": {
+                "x": 0.0,
+                "y": 90.0,
+                "z": 0.0
+            },
+            "_localscale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            }
+        }
+    ]
+}

@@ -106,21 +106,21 @@ NavMeshSettings:
   m_BuildSettings:
     serializedVersion: 2
     agentTypeID: 0
-    agentRadius: 0.5
-    agentHeight: 2
-    agentSlope: 45
-    agentClimb: 0.4
+    agentRadius: 0.01
+    agentHeight: 0.03
+    agentSlope: 12.5
+    agentClimb: 0.01
     ledgeDropHeight: 0
     maxJumpAcrossDistance: 0
-    minRegionArea: 2
-    manualCellSize: 0
-    cellSize: 0.16666667
+    minRegionArea: 1
+    manualCellSize: 1
+    cellSize: 0.01
     manualTileSize: 0
     tileSize: 256
     accuratePlacement: 0
     debug:
       m_Flags: 0
-  m_NavMeshData: {fileID: 0}
+  m_NavMeshData: {fileID: 23800000, guid: 1664f9d2f60a84435814fdcfe3767d8a, type: 2}
 --- !u!1 &27047431
 GameObject:
   m_ObjectHideFlags: 0
@@ -382,9 +382,11 @@ GameObject:
   - component: {fileID: 923428622}
   - component: {fileID: 923428621}
   - component: {fileID: 923428625}
+  - component: {fileID: 923428627}
+  - component: {fileID: 923428626}
   m_Layer: 0
   m_Name: AR Session Origin
-  m_TagString: Untagged
+  m_TagString: GameSessionOrigin
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -458,6 +460,31 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_PointCloudPrefab: {fileID: 1260558121201290224, guid: 6401534406ffb4230a1adfaaa48b0110,
     type: 3}
+--- !u!114 &923428626
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 923428620}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb780cdb379cc4100ac4b47487779349, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &923428627
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 923428620}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 728ad7fae8e460a4ba41265c7308d757, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ReferencePointPrefab: {fileID: 0}
 --- !u!1 &1442870607
 GameObject:
   m_ObjectHideFlags: 0
@@ -470,7 +497,7 @@ GameObject:
   - component: {fileID: 1442870608}
   m_Layer: 0
   m_Name: AR Placement Interactable
-  m_TagString: Untagged
+  m_TagString: Game
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -517,11 +544,22 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_CustomReticle: {fileID: 0}
-  m_PlacementPrefab: {fileID: 2586015282128355621, guid: 2228c18e5cdd14b6187f1bff5867bc98,
+  m_PlacementPrefab: {fileID: 3397346204195653471, guid: 6189aba89c700468d94b2ceaf03ebf65,
     type: 3}
   m_OnObjectPlaced:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 923428626}
+        m_MethodName: SetReferencePointAsParent
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!4 &1442870609
 Transform:
   m_ObjectHideFlags: 0
@@ -549,7 +587,7 @@ GameObject:
   - component: {fileID: 1535237832}
   m_Layer: 0
   m_Name: AR Session
-  m_TagString: Untagged
+  m_TagString: GameSession
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

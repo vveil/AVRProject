@@ -22,7 +22,7 @@ public class Hunt : MonoBehaviour
             agent.speed = 0;
         } else {
             agent.SetDestination(target.transform.position);
-            agent.speed = 5;
+            // agent.speed = 5;
         }
     }
 }

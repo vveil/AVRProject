@@ -14697,6 +14697,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: NPC
       objectReference: {fileID: 0}
+    - target: {fileID: 4005990369445149836, guid: 20024b6857daf4a8cbd03f81555c60c8,
+        type: 3}
+      propertyPath: m_TagString
+      value: NPC
+      objectReference: {fileID: 0}
+    - target: {fileID: 4005990369445149841, guid: 20024b6857daf4a8cbd03f81555c60c8,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4005990369445149841, guid: 20024b6857daf4a8cbd03f81555c60c8,
+        type: 3}
+      propertyPath: m_Radius
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4005990369445149841, guid: 20024b6857daf4a8cbd03f81555c60c8,
+        type: 3}
+      propertyPath: m_Height
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 4005990369445149842, guid: 20024b6857daf4a8cbd03f81555c60c8,
         type: 3}
       propertyPath: m_AgentTypeID
@@ -14781,6 +14801,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5342780729686438501, guid: 20024b6857daf4a8cbd03f81555c60c8,
+        type: 3}
+      propertyPath: m_IsKinematic
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 20024b6857daf4a8cbd03f81555c60c8, type: 3}
@@ -25562,6 +25587,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5203057743850588845, guid: 95d30b78ac2f84438a0bb38525750bc7,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5203057743850588845, guid: 95d30b78ac2f84438a0bb38525750bc7,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5203057743850588845, guid: 95d30b78ac2f84438a0bb38525750bc7,
+        type: 3}
+      propertyPath: m_Size.z
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 7607256118952640642, guid: 95d30b78ac2f84438a0bb38525750bc7,
         type: 3}
       propertyPath: _grid_index.x
@@ -25572,7 +25612,8 @@ PrefabInstance:
       propertyPath: _grid_index.z
       value: 6
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7164404370839219206, guid: 95d30b78ac2f84438a0bb38525750bc7, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 95d30b78ac2f84438a0bb38525750bc7, type: 3}
 --- !u!1 &9057858445208996900 stripped
 GameObject:

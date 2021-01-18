@@ -8,6 +8,8 @@ TagManager:
   - GameSessionOrigin
   - Game
   - Level
+  - NPC
+  - Test
   layers:
   - Default
   - TransparentFX

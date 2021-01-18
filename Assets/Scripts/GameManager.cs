@@ -10,4 +10,5 @@ public class GameManager : MonoBehaviour
     {
         Instantiate(turret, new Vector3(pos.x, pos.y + 0.05f, pos.z), Quaternion.identity);
     }
+    
 }

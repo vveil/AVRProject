@@ -33,7 +33,7 @@ public class Selection : MonoBehaviour
         if (!isTurretActive)
         {
                 GameObject gameManager = GameObject.Find("GameManager");
-                gameManager.GetComponent<GameManager>().instantiateTurret(transform.position);
+                gameManager.GetComponent<GameManager>().instantiateTurret(transform);
                 isTurretActive = true;
         }
     }

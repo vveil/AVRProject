@@ -1,4 +1,7 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.XR.ARFoundation;
 using UnityEngine.XR.Interaction.Toolkit.AR;
 
@@ -89,6 +92,7 @@ public class AddReferencePoint : MonoBehaviour
     }
     arPlaneManager.enabled = true;
     arPointCloudManager.enabled = true;
+    // GameObject.Find("Debug").GetComponent<Text>().text = GameObject.FindWithTag("Game").GetComponent<ARPlacementInteractable>().placementPrefab.name;
     GameObject.FindWithTag("GameSession").GetComponent<ARSession>().Reset();
   }
 }

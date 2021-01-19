@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.XR.ARFoundation;
+using UnityEngine.XR.Interaction.Toolkit.AR;
 
 public class UIManager : MonoBehaviour
 {
@@ -31,6 +33,10 @@ public class UIManager : MonoBehaviour
 
         helpButton.gameObject.SetActive(true);
         helpButton.onClick.AddListener(ToggleHelp);
+        // if (GameObject.FindWithTag("Game").GetComponent<ARPlacementInteractable>().placementPrefab == null)
+        // {
+        //     GameObject.Find("Debug").GetComponent<Text>().text = "null";
+        // }
     }
 
     private void ToggleHelp()
@@ -48,7 +54,6 @@ public class UIManager : MonoBehaviour
 
     public void GameWon()
     {
-        // TODO Call this function when all NPC are dead!
         Time.timeScale = 0f;
         restartButton.onClick.AddListener(RestartGame);
         restartButton.gameObject.SetActive(true);
@@ -57,6 +62,17 @@ public class UIManager : MonoBehaviour
 
     private void RestartGame()
     {
-        // Restart game somehow
+        GameObject[] towers = GameObject.FindGameObjectsWithTag("Tower");
+        foreach (var tower in towers)
+        {
+            Destroy(tower);
+        }
+        // Destroy(GameObject.FindGameObjectWithTag("Level"));
+        restartButton.gameObject.SetActive(false);
+        startButton.gameObject.SetActive(true);
+        gameOverText.SetActive(false);
+        gameWonText.SetActive(false);
+        startText.SetActive(true);
+        GameObject.FindWithTag("GameSessionOrigin").GetComponent<AddReferencePoint>().ResetGame();
     }
 }

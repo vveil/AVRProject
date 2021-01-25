@@ -10,7 +10,7 @@ public class FinishReached : MonoBehaviour
         if (other.gameObject.tag == "NPC")
         {
             GameObject gameManager = GameObject.Find("GameManager");
-            gameManager.GetComponent<UIManager>().GameLost();
+            gameManager.GetComponent<GameManager>().reducePlayerLifePoints();
         }
     }
 }

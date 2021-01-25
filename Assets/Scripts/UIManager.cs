@@ -11,6 +11,7 @@ public class UIManager : MonoBehaviour
     public Button helpButton;
     public GameObject startText;
     public GameObject helpText;
+    public GameObject playerMoneyText;
     public Button restartButton;
     public GameObject gameOverText;
     public GameObject gameWonText;
@@ -58,5 +59,11 @@ public class UIManager : MonoBehaviour
     private void RestartGame()
     {
         // Restart game somehow
+    }
+
+    public void showMoneyText(int money)
+    {
+        Text moneyText = playerMoneyText.GetComponent<Text>();
+        moneyText.text = "Coins: " + money;
     }
 }

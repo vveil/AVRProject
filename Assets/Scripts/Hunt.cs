@@ -19,15 +19,9 @@ public class Hunt : MonoBehaviour
     {
         if (paused)
         {
-            agent.speed = 0;
-        } else if(agent.transform.position == target.transform.position)
-        {
-            GameObject gameManager = GameObject.Find("GameManager");
-            gameManager.GetComponent<UIManager>().GameLost();
-        }
-        else {
-            agent.SetDestination(target.transform.position);
-            // agent.speed = 5;
+            agent.isStopped = true;
+        } else {
+            agent.isStopped = false;
         }
     }
 }

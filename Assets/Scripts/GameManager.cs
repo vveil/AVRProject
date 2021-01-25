@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
@@ -17,11 +17,12 @@ public class GameManager : MonoBehaviour
     /**
      * instantiate turret on touched hexagon, if turret would block npcs path don't place it
      */
-    public void instantiateTurret(Vector3 pos)
+    public void instantiateTurret(Transform trans)
     {
         if (isNPCPathComplete())
         {
-            Instantiate(turret, new Vector3(pos.x, pos.y + 0.05f, pos.z), Quaternion.identity);
+            Vector3 pos = trans.position;
+            Instantiate(turret, new Vector3(pos.x, pos.y + 0.1f, pos.z), trans.rotation);
         } else
         {
             // TODO make visible that turret can't be placed cause it would block npcs path to destination

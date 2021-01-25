@@ -81,5 +81,15 @@ crashlytics-build.properties
 /[Aa]ssets/Hexlands_LowPolyStyle/
 /[Aa]ssets/Hexlands_LowPolyStyle/*
 
+# Ignore Examples from NavMeshComponents
+/[Aa]ssets/Examples.meta
+/[Aa]ssets/Examples/
+/[Aa]ssets/Examples/*
+
+# Ignore Tests from NavMeshComponents
+/[Aa]ssets/Tests.meta
+/[Aa]ssets/Tests/
+/[Aa]ssets/Tests/*
+
 #Visual Studio Code
 Packages/

@@ -10,6 +10,9 @@ TagManager:
   - Level
   - NPC
   - Test
+  - Tower
+  - GameMap
+  - Weapon
   layers:
   - Default
   - TransparentFX

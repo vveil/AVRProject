@@ -11,7 +11,9 @@ public class GameManager : MonoBehaviour
   [SerializeField]
   private int playerMoney = 100;
 
-  private float timer = 3f;
+  private bool isPlaced = false;
+
+  private GameObject instantiatedTurret;
 
   /**
    * instantiate turret on touched hexagon, if turret would block npcs path don't place it
@@ -19,18 +21,10 @@ public class GameManager : MonoBehaviour
   public void instantiateTurret(Transform groundTrans)
   {
     Vector3 pos = groundTrans.position;
-    GameObject instantiatedTurret = Instantiate(turret, new Vector3(pos.x, pos.y + 0.1f, pos.z), groundTrans.rotation);
-    ModifyPlayerMoney(-20);
-    Debug.Log("Calling isNPCPathComplete from instantiateTurret()");
-    if (!isNPCPathComplete())
-    {
-      Destroy(instantiatedTurret);
-      ModifyPlayerMoney(20);
-    }
-    else
-    {
-      // TODO make visible that turret can't be placed cause it would block npcs path to destination
-    }
+    instantiatedTurret = Instantiate(turret, new Vector3(pos.x, pos.y + 0.1f, pos.z), groundTrans.rotation);
+    instantiatedTurret.SetActive(false);
+    Debug.Log("Placed turret");
+    isPlaced = true;
   }
 
   /**
@@ -68,13 +62,18 @@ public class GameManager : MonoBehaviour
 
   private void Update()
   {
-    if(timer > 0)
+    if (isPlaced)
     {
-      timer -= Time.deltaTime;
-    } else
-    {
-      timer = 3;
-      Debug.Log("Calling from update" + isNPCPathComplete().ToString());
+      if (!isNPCPathComplete())
+      {
+        Destroy(instantiatedTurret);
+      }
+      else
+      {
+        instantiatedTurret.SetActive(true);
+        ModifyPlayerMoney(-20);
+      }
+      isPlaced = false;
     }
   }
 }

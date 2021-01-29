@@ -12,27 +12,14 @@ public class AddReferencePoint : MonoBehaviour
   ARPointCloudManager arPointCloudManager;
   GameObject gamePrefab = null;
 
-
-  // Start is called before the first frame update
-  void Start()
-  {
-
-  }
-
   /// <summary>
   /// Awake is called when the script instance is being loaded.
   /// </summary>
-  void Awake()
+  private void Awake()
   {
     arReferencePointManager = GetComponent<ARReferencePointManager>();
     arPlaneManager = GetComponent<ARPlaneManager>();
     arPointCloudManager = GetComponent<ARPointCloudManager>();
-  }
-
-  // Update is called once per frame
-  void Update()
-  {
-
   }
 
   public void SetReferencePointAsParent(ARPlacementInteractable arPlacementInteractable, GameObject placedObject)

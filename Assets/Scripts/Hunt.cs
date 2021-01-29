@@ -3,24 +3,32 @@ using UnityEngine.AI;
 
 public class Hunt : MonoBehaviour
 {
-  public GameObject target;
-  private NavMeshAgent agent;
-  public bool paused = false;
-  public float speed = 0.5f;
-  // Start is called before the first frame update
-  void Start()
+    private NavMeshAgent agent;
+
+    [SerializeField]
+    private bool isPaused = false;
+
+    public GameObject target;
+  
+  private void Start()
   {
-    agent = this.gameObject.GetComponent<NavMeshAgent>();
+    agent = gameObject.GetComponent<NavMeshAgent>();
   }
 
   // Update is called once per frame
-  void Update()
+  private void Update()
   {
-    if (paused)
+    if (isPaused)
         {
             agent.isStopped = true;
     } else {
-            agent.isStopped = false;
+      agent.isStopped = false;
+      agent.SetDestination(target.transform.position);
     }
+  }
+
+  public GameObject GetTarget()
+  {
+    return target;
   }
 }

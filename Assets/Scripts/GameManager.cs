@@ -5,68 +5,59 @@ using UnityEngine.AI;
 
 public class GameManager : MonoBehaviour
 {
-    
-    public GameObject turret;
+  [SerializeField]
+  private GameObject turret;
 
-    [SerializeField]
-    private int playerMoney = 500;
+  [SerializeField]
+  private int playerMoney = 100;
 
-    [SerializeField]
-    private int playerLifePoints = 50;
-
-    /**
-     * instantiate turret on touched hexagon, if turret would block npcs path don't place it
-     */
-    public void instantiateTurret(Transform trans)
+  /**
+   * instantiate turret on touched hexagon, if turret would block npcs path don't place it
+   */
+  public void instantiateTurret(Transform groundTrans)
+  {
+    Vector3 pos = groundTrans.position;
+    GameObject instantiatedTurret = Instantiate(turret, new Vector3(pos.x, pos.y + 0.1f, pos.z), groundTrans.rotation);
+    if (!isNPCPathComplete())
     {
-        if (isNPCPathComplete())
-        {
-            Vector3 pos = trans.position;
-            Instantiate(turret, new Vector3(pos.x, pos.y + 0.1f, pos.z), trans.rotation);
-        } else
-        {
-            // TODO make visible that turret can't be placed cause it would block npcs path to destination
-        }
+      Destroy(instantiatedTurret);
     }
-
-    /**
-     * Check if NPCs path to destination is complete
-     * @return bool if path not complete return false, else return true
-     */
-    private bool isNPCPathComplete()
+    else
     {
-        GameObject[] npcs = GameObject.FindGameObjectsWithTag("NPC");
-        foreach (GameObject npc in npcs) {
-            NavMeshAgent navMeshAgent = npc.GetComponent<NavMeshAgent>();
-            if(navMeshAgent.pathStatus != NavMeshPathStatus.PathComplete)
-            {
-                return false;
-            }
-        }
-
-        return true;
+      // TODO make visible that turret can't be placed cause it would block npcs path to destination
     }
+  }
 
-    public void reducePlayerLifePoints()
+  /**
+   * Check if NPCs path to destination is complete
+   * @return bool if path not complete return false, else return true
+   */
+  private bool isNPCPathComplete()
+  {
+    GameObject[] npcs = GameObject.FindGameObjectsWithTag("NPC");
+    foreach (GameObject npc in npcs)
     {
-        --playerLifePoints;
-        if(playerLifePoints <= 0)
-        {
-            GetComponent<UIManager>().GameLost();
-        }
+      NavMeshAgent navMeshAgent = npc.GetComponent<NavMeshAgent>();
+      GameObject npcTarget = npc.GetComponent<Hunt>().GetTarget();
+      NavMeshPath path = new NavMeshPath();
+      navMeshAgent.CalculatePath(npcTarget.transform.position, path);
+      if (path.status != NavMeshPathStatus.PathComplete)
+      {
+        return false;
+      }
     }
+    return true;
+  }
 
-    // TODO call this when NPC was killed or turret has been sold
-    public void increasePlayerMoney(int amount = 1)
-    {
-        playerMoney += amount;
-        GetComponent<UIManager>().showMoneyText(playerMoney);
-    }
+  // TODO call this when NPC was killed or turret has been sold
+  public void ModifyPlayerMoney(int amount = 10)
+  {
+    playerMoney += amount;
+    GetComponent<UIManager>().showMoneyText(playerMoney);
+  }
 
-    // TODO call this when new turret was placed/turret was upgraded
-    public void descreasePlayerMoney(int amount = 1)
-    {
-        playerMoney -= amount;
-        GetComponent<UIManager>().showMoneyText(playerMoney);
-    }
+  public int getPlayerMoney()
+  {
+    return playerMoney;
+  }
 }

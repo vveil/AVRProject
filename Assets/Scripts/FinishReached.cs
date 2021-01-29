@@ -4,13 +4,12 @@ using UnityEngine;
 
 public class FinishReached : MonoBehaviour
 {
-
-    private void OnTriggerEnter(Collider other)
+  private void OnTriggerEnter(Collider other)
+  {
+    if (other.gameObject.tag == "NPC")
     {
-        if (other.gameObject.tag == "NPC")
-        {
-            GameObject gameManager = GameObject.Find("GameManager");
-            gameManager.GetComponent<GameManager>().reducePlayerLifePoints();
-        }
+      GameObject gameManager = GameObject.Find("GameManager");
+      gameManager.GetComponent<PlayerHealth>().ModifyHealth(-1);
     }
+  }
 }

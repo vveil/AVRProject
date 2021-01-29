@@ -5,23 +5,20 @@ using UnityEngine;
 public class Swing : MonoBehaviour
 {
 
-  //adjust this to change speed
-  public float speed = 5.0f;
+  [SerializeField]
+  private float speed = 5.0f;
 
-  //adjust this to change how high it goes
-  public float height = 0.0125f;
+  [SerializeField]
+  private float height = 0.0125f;
 
-  Vector3 pos;
+  private Vector3 pos;
 
-
-  // Start is called before the first frame update
-  void Start()
+  private void Start()
   {
     pos = transform.position;
   }
 
-  // Update is called once per frame
-  void Update()
+  private void Update()
   {
     //calculate what the new Y position will be
     float newY = Mathf.Sin(Time.time * speed) * height + pos.y;

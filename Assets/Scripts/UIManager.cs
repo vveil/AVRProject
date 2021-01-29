@@ -78,7 +78,7 @@ public class UIManager : MonoBehaviour
   {
     playerMoneyText.SetActive(true);
     Text moneyText = playerMoneyText.GetComponent<Text>();
-    moneyText.text = "Coins: " + money;
+    moneyText.text = "Coins: " + money.ToString();
   }
 
   private void disableGameUI()

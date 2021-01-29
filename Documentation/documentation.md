@@ -33,7 +33,7 @@ Im Rahmen der Entwicklung dieser Unity Applikation werden voraussichtlich folgen
 1. Ein User Interface zum Platzieren der Arena und Abwehrtürme
 2. Navigation Mesh in Form von begehbaren Hexagons und dessen Manipulation durch
 Abwehrturm Hexagons, welche unter Umständen anliegende Hexagons blockieren.
-3. Artificial Intelligence in Form von Autonomen Gegnern, die auf dem Weg zum Ziel versuchen
+3. Artificial Intelligence in Form von autonomen Gegnern, die auf dem Weg zum Ziel versuchen
 den kürzesten Weg zu nehmen.
 4. Audio in Form von Spielsound
 5. Texturen in Form von Optischen Designmitteln

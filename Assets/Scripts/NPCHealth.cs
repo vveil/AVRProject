@@ -27,8 +27,9 @@ public class NPCHealth : MonoBehaviour
       if (currentHealth <= 0)
       {
         Destroy(gameObject);
-        // TODO mit Waves muss das wo anders stehen, Game erst verloren wenn alle NPCs tot sind!
+        // TODO mit Waves muss das wo anders stehen, Game erst verloren wenn alle NPCs tot sind
         GameObject gameManager = GameObject.Find("GameManager");
+        gameManager.GetComponent<GameManager>().ModifyPlayerMoney(10);
         gameManager.GetComponent<UIManager>().GameWon();
       } else if (healthPct > 0.5f)
       {

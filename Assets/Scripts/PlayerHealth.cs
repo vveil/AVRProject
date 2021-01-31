@@ -18,7 +18,7 @@ public class PlayerHealth : MonoBehaviour
   /**
    * Modify the players health
    * @param {Int} amount will be added to current health (pass negative value
-   * to reduce currentHealth
+   * to reduce currentHealth)
    * */
   public void ModifyHealth(int amount)
   {

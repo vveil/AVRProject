@@ -28,6 +28,16 @@ public class Hunt : MonoBehaviour
     }
   }
 
+  private void OnTriggerEnter(Collider other)
+  {
+    // reduce playerHealth if NPC reaches finish
+    if (other.gameObject.tag == "Finish")
+    {
+      GameObject gameManager = GameObject.Find("GameManager");
+      gameManager.GetComponent<PlayerHealth>().ModifyHealth(-1);
+    }
+  }
+
   public GameObject GetTarget()
   {
     return target;

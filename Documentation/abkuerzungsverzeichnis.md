@@ -1,5 +1,5 @@
 ## Abkürzungsverzeichnis
-
+[Startseite der Dokumentation](./documentation.md)
 Abkürzung | Bedeutung
 ------|-----
 AVR | Augmented & Virtual Reality

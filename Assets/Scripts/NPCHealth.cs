@@ -9,17 +9,15 @@ public class NPCHealth : MonoBehaviour
 
   private Renderer rend;
 
-  public Color normalColor;
-
   private void Start()
   {
     currentHealth = maxHealth;
     rend = GetComponent<Renderer>();
-    normalColor = rend.material.color;
   }
 
   private void OnTriggerEnter(Collider other)
   {
+    // if NPC collides with a weapon NPC gets damaged or dies
     if (other.gameObject.tag == "Weapon")
     {
       currentHealth -= 1;
@@ -33,12 +31,15 @@ public class NPCHealth : MonoBehaviour
         gameManager.GetComponent<UIManager>().GameWon();
       } else if (healthPct > 0.5f)
       {
+        // set NPC color to green if npcHealth is > 50%
         rend.material.color = Color.green;
       } else if(healthPct > 0.25f)
       {
+        // set NPC color to yellow if npcHealth is between 50% - 25%
         rend.material.color = Color.yellow;
       } else
       {
+        // set NPC color to red if npcHealth is between 25% - 0%
         rend.material.color = Color.red;
       }
     }

@@ -1,9 +1,14 @@
 # AVR(BI128) Semesterprojekt - Tower Defense in AR
-von Dennis Pribe und Niklas Werner
+von Dennis Pribe und Niklas Werner  
 
-## Linksammlung
-[Software-Dokumentation](./software-documentation)  
-[Abkürzungsverzeichnis](./abkuerzungsverzeichnis.md)
+- [AVR(BI128) Semesterprojekt - Tower Defense in AR](#avrbi128-semesterprojekt---tower-defense-in-ar)
+  - [Konzeption - Tower Defense Genre als Basis](#konzeption---tower-defense-genre-als-basis)
+  - [Projekt Vision - AR Tower Defense](#projekt-vision---ar-tower-defense)
+    - [Grundlegender Spielaufbau](#grundlegender-spielaufbau)
+    - [Voraussichtliche Themen Umsetzung](#voraussichtliche-themen-umsetzung)
+  - [Umsetzung & Testen](#umsetzung--testen)
+  - [Fazit](#fazit)
+  - [Linksammlung](#linksammlung)
 
 ## Konzeption - Tower Defense Genre als Basis
 Das Tower Defense Spielprinzip beschreibt ein Genre, in dem ein Spieler versucht, erscheinende Gegner daran zu hindern von einem Startpunkt aus ihr Ziel zu erreichen. Dies gelingt ihm, indem die Gegner vor Erreichen des Ziels mittels Abwehrmechaniken unschädlich gemacht werden.  
@@ -38,4 +43,18 @@ den kürzesten Weg zu nehmen.
 4. Audio in Form von Spielsound
 5. Texturen in Form von Optischen Designmitteln
 
-## Reflektion & Fazit
+## Umsetzung & Testen
+Zur Umsetzung des Projekts ist zu sagen, dass nicht alle Ziele, die in der [Projekt Vision](#projekt-vision---ar-tower-defense) genannt wurden, umgesetzt werden konnten.  
+Allerdings konnten die Bereiche User Interface, `NavMesh` in Kombination mit AI, Collision und Texturen/Materials umgesetzt werden. Auf mehrere Waves verteilt erscheinen immer wieder NPCs, welche daran gehindert werden müssen das Ziel zu erreichen. Erreicht ein NPC dennoch das Ziel werden dem Spieler Lebenspunkte abgezogen. Sinken die Lebenspunkte auf 0 hat der Spieler verloren. Mit Hilfe des _MapTileGridCreators_ aus dem Asset Store wurde eine Map erstellt, welche bei Nutzung der App in AR durch einen Touch auf das Display gesetzt werden kann. Es wurden Skripte erstellt, welche die UI, das Verhalten der NPCs, das Platzieren von Türmen sowie das generelle Spielverhalten verwalten.   
+Welche Skripte, 3D Modelle sowie Materials selbst erstellt wurden kann [hier](./eigenleistung.md) eingesehen werden.
+Die verschiedenen Funktionen der App wurden im Verlauf der Entwicklung mehrfach getestet. Bei Abgabe des Ghost Prototypes wurde festgestellt, dass es möglich ist, einen Tower so zu platzieren, dass die NPCs nicht mehr das Ziel erreichen können. Daraufhin wurde dieser Bug von den Entwicklern behoben und erneut getestet. Der Test wurde durchgeführt, in dem ein Smartphone an den Lapttop angeschlossen wurde, das Projekt über `Build and run` gebaut und gestartet wurde und probiert wurde, ob es weiterhin möglich ist, den NPCs den Weg zu versperren. Durch den Test wurde festgestellt, dass dies nun nicht mehr möglich ist.  
+Um festzustellen, ob das UI und die Verwendung der App intuitiv ist, wurde die App 2 Kommilitonen gezeigt, welche ohne weitere Erklärungen das Spiel spielen sollten. Dabei kam heraus, dass einem der Kommilitonen nach dem Druck auf `Start` nicht klar war, wie er die Map platzieren kann. Aufgrund dessen wurde ein ?-`Button` hinzugefügt. Bei Druck auf den Button erscheint eine kurze Anleitung, wie das Spiel funktioniert. Der andere Kommilitone fand sich direkt im Spiel zurecht.
+
+## Fazit
+Abschließend lässt sich sagen, dass zwar nicht alle Elemente aus der Vision des Projekts umgesetzt werden konnten, es aber dennoch ein erfolgreiches Projekt geworden ist. Es wurde ein AR Tower Defense Spiel erstellt, welches zum Abschluss des Projekts spielbar ist. Durch die praktische Umsetzung des Projekts konnte viel im Bereich UI und NavMesh & AI gelernt werden. Die Arbeitsteilung zwischen den zwei Entwicklern wird ungefähr auf 50/50 geschätzt.
+
+## Linksammlung
+[Einrichtungshinweise](./einrichtung.md)  
+[Liste der Eigenleistungen](./eigenleistung.md)  
+[Software-Dokumentation](./software-documentation.md)  
+[Abkürzungsverzeichnis](./abkuerzungsverzeichnis.md)

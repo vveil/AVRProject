@@ -89,8 +89,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53bedabd8a7164e89a80d4eaa139efb8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speedswing: 2.5
-  speedrotate: 20
+  swingSpeed: 2.5
+  rotationSpeed: 20
   height: 0.025
 --- !u!1 &3569235524570808158
 GameObject:

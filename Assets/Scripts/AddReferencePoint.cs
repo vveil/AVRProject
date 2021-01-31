@@ -61,25 +61,26 @@ public class AddReferencePoint : MonoBehaviour
 
   }
 
-  public void ResetGame()
-  {
-    // GameObject.FindWithTag("Scorer").GetComponent<ScoreController>().score = 0;
-    // GameObject.FindWithTag("MainCamera").GetComponent<Werfen>().gameObjectIsSet = false;
-    // GameObject.FindWithTag("MainCamera").GetComponent<Werfen>().ballCount = 0;
-    // GameObject.FindWithTag("ScoreBoard_Balls").GetComponent<Text>().text = "Würfe: 0";
-    // GameObject.FindWithTag("ScoreBoard_Score").GetComponent<Text>().text = "Punkte: 0";
-    GameObject.FindWithTag("Game").GetComponent<ARPlacementInteractable>().placementPrefab = gamePrefab;
-    foreach (ARPlane plane in arPlaneManager.trackables)
-    {
-      plane.gameObject.SetActive(true);
-    }
-    foreach (ARPointCloud pointCloud in arPointCloudManager.trackables)
-    {
-      pointCloud.gameObject.SetActive(true);
-    }
-    arPlaneManager.enabled = true;
-    arPointCloudManager.enabled = true;
-    // GameObject.Find("Debug").GetComponent<Text>().text = GameObject.FindWithTag("Game").GetComponent<ARPlacementInteractable>().placementPrefab.name;
-    GameObject.FindWithTag("GameSession").GetComponent<ARSession>().Reset();
-  }
+  // TODO diese Funktion löschen wenn wir sie nicht verwenden
+  //public void ResetGame()
+  //{
+  //  // GameObject.FindWithTag("Scorer").GetComponent<ScoreController>().score = 0;
+  //  // GameObject.FindWithTag("MainCamera").GetComponent<Werfen>().gameObjectIsSet = false;
+  //  // GameObject.FindWithTag("MainCamera").GetComponent<Werfen>().ballCount = 0;
+  //  // GameObject.FindWithTag("ScoreBoard_Balls").GetComponent<Text>().text = "Würfe: 0";
+  //  // GameObject.FindWithTag("ScoreBoard_Score").GetComponent<Text>().text = "Punkte: 0";
+  //  GameObject.FindWithTag("Game").GetComponent<ARPlacementInteractable>().placementPrefab = gamePrefab;
+  //  foreach (ARPlane plane in arPlaneManager.trackables)
+  //  {
+  //    plane.gameObject.SetActive(true);
+  //  }
+  //  foreach (ARPointCloud pointCloud in arPointCloudManager.trackables)
+  //  {
+  //    pointCloud.gameObject.SetActive(true);
+  //  }
+  //  arPlaneManager.enabled = true;
+  //  arPointCloudManager.enabled = true;
+  //  // GameObject.Find("Debug").GetComponent<Text>().text = GameObject.FindWithTag("Game").GetComponent<ARPlacementInteractable>().placementPrefab.name;
+  //  GameObject.FindWithTag("GameSession").GetComponent<ARSession>().Reset();
+  //}
 }

@@ -14,9 +14,11 @@ public class Selection : MonoBehaviour
   [SerializeField]
   private float rotationSpeed = 20.0f;
 
-  //adjust this to change how high it goes
+  // adjust this to change how high it goes
   [SerializeField]
   private float height = 0.025f;
+
+  //private GameObject instantiatedTurret;
 
   private Vector3 pos;
 
@@ -32,11 +34,18 @@ public class Selection : MonoBehaviour
     // set the object's Y to the new calculated Y
     transform.position = new Vector3(transform.position.x, newY, transform.position.z);
     transform.Rotate(new Vector3(0.0f, 1.0f, 0.0f) * rotationSpeed * Time.deltaTime);
+    //if (Input.touchCount > 0)
+    //{
+    GameObject gameManager = GameObject.Find("GameManager");
     if (!isTurretActive)
     {
-      GameObject gameManager = GameObject.Find("GameManager");
-      gameManager.GetComponent<GameManager>().instantiateTurret(transform);
-      isTurretActive = true;
+      Debug.Log("Calling instantiateTurret from Selection.cs");
+      isTurretActive = gameManager.GetComponent<GameManager>().instantiateTurret(transform);
     }
+    else
+    {
+      //gameManager.GetComponent<UIManager>().showTurretOptions(instantiatedTurret);
+    }
+    //}
   }
 }

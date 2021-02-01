@@ -99,7 +99,10 @@ public class GameManager : MonoBehaviour
   public void handleUpgradeTurret(string turretName)
   {
     Debug.Log("Upgrading " + turretName);
-    ModifyPlayerMoney(-20);
+    if (playerMoney - 20 >= 0)
+    {
+      ModifyPlayerMoney(-20);
+    }
   }
 
   private void Update()

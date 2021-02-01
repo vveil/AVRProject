@@ -12,7 +12,28 @@ public class GameManager : MonoBehaviour
   private GameObject turret;
 
   [SerializeField]
-  private int playerMoney = 100;
+  private GameObject npc;
+
+  [SerializeField]
+  private int playerMoney = 200;
+
+  [SerializeField]
+  private int npcCount = 5;
+
+  [SerializeField]
+  private int npcBoostAmount = 50;
+
+  private int npcAlive = 0;
+
+  [SerializeField]
+  private int waveCount = 4;
+  
+  [SerializeField]
+  private bool waveActive = false;
+
+  [SerializeField]
+  private int waveWaitTimer = 20;
+  private bool gameIsStarted = false;
 
   private bool isPlaced = false;
   private int turretCount = 0;
@@ -105,8 +126,88 @@ public class GameManager : MonoBehaviour
     }
   }
 
+  public void startGame() {
+    gameIsStarted = true;
+  }
+
+  public void waveControl() {
+    if (waveActive)
+    {
+      return;
+    } else
+    {
+      if (npcAlive > 0)
+      {
+        return;
+      } else
+      {
+        if (waveCount == 0 && GetComponent<PlayerHealth>().getCurrentHealth() > 0)
+        {
+          Debug.Log("Game Gewonnen, weil keine Wave und keine Gegner mehr über!");
+          GetComponent<UIManager>().GameWon();
+          return;
+        }
+        Debug.Log("Keiner Gegner oder Wave aktiv, neue Runde startet!");
+        waveActive = true;
+        StartCoroutine(waveTimer(waveWaitTimer));
+      }
+    }
+  }
+
+  IEnumerator waveTimer(int timer) {
+    while(timer > 0)
+    {
+      timer--;
+      Debug.Log("Nächste Wave in: " + timer + " Sekunden");
+      GetComponent<UIManager>().updateTimer(timer);
+      yield return new WaitForSeconds(1);
+    }
+    StartCoroutine(spawnNPC(npcCount));
+  }  
+
+  IEnumerator spawnNPC(int count) {
+    npcAlive = 0;
+    while(count>0)
+    {
+       count--;
+         placeNPC();
+         yield return new WaitForSeconds(2);
+    }
+    waveCount--;
+    Debug.Log("Noch: " + waveCount + " Wellen zum Sieg!");
+    waveActive = false;
+  }
+
+  public void placeNPC() {
+    GameObject start = GameObject.FindGameObjectWithTag("Start");
+    Transform trans = start.transform;
+    Vector3 pos = trans.position;
+    GameObject temp = Instantiate(npc, new Vector3(pos.x, pos.y + 0.1f, pos.z), trans.rotation);
+    npcBoostAmount = 12/waveCount * 2;
+    Debug.Log("BoostAmount: " + npcBoostAmount);
+    temp.GetComponent<NPCHealth>().boostNPC(npcBoostAmount);
+    npcAlive++;
+    Debug.Log("Neuer Gegner betritt das Feld! Mit: " + temp.GetComponent<NPCHealth>().getCurrentHealth() + " Lebenspunkten");
+    Debug.Log("Aktuell: " + npcAlive + " Gegner am leben.");
+  }
+
+  // public void boostNPC() {
+  //   npc.GetComponent<NPCHealth>().boostNPC(npcBoostAmount);
+  // }
+
+  public void reduceNPC() {
+    npcAlive--;
+    Debug.Log("Gegner hat das Ziel erreicht oder wurde zerstört, es verbleiben: " + npcAlive );
+  }
+
   private void Update()
   {
+    // map place
+    if (gameIsStarted) 
+    {
+        waveControl();
+    }
+
     if (isPlaced)
       {
         if (!isNPCPathComplete())

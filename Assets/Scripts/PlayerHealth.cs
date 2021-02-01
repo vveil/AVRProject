@@ -7,7 +7,7 @@ using UnityEngine;
 public class PlayerHealth : MonoBehaviour
 {
   [SerializeField]
-  private int maxHealth = 100;
+  private int maxHealth = 10;
 
   private int currentHealth;
 
@@ -33,5 +33,9 @@ public class PlayerHealth : MonoBehaviour
     {
       GetComponent<UIManager>().GameLost();
     }
+  }
+
+  public int getCurrentHealth () {
+    return currentHealth;
   }
 }

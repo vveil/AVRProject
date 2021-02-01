@@ -13,6 +13,7 @@ TagManager:
   - Tower
   - GameMap
   - Weapon
+  - Start
   layers:
   - Default
   - TransparentFX

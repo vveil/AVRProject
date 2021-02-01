@@ -46,7 +46,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   turret: {fileID: 646139099380737242, guid: 0d180711167e94e16aff21473ad51d2a, type: 3}
+  npc: {fileID: 4005990369445149836, guid: 20024b6857daf4a8cbd03f81555c60c8, type: 3}
   playerMoney: 500
+  npcCount: 5
+  npcAlive: 0
+  waveCount: 5
 --- !u!114 &2913473632619424283
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -69,6 +73,10 @@ MonoBehaviour:
   gameWonText: {fileID: 0}
   playerHealthForeground: {fileID: 0}
   healthUI: {fileID: 0}
+  towerOptions: {fileID: 0}
+  upgradeTower: {fileID: 0}
+  sellTower: {fileID: 0}
+  cancelButton: {fileID: 0}
 --- !u!114 &2913473632619424280
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -81,4 +89,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f82f65f2f65824b1cacac9a3deffaa64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
+  maxHealth: 10

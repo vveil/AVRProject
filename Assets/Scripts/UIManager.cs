@@ -24,6 +24,7 @@ public class UIManager : MonoBehaviour
   public Button upgradeTower;
   public Button sellTower;
   public Button cancelButton;
+  public GameObject waveTimer;
 
   private void Awake()
   {
@@ -51,8 +52,10 @@ public class UIManager : MonoBehaviour
     helpButton.onClick.AddListener(ToggleHelp);
 
     healthUI.SetActive(true);
+    waveTimer.SetActive(true);
 
     showMoneyText(GetComponent<GameManager>().getPlayerMoney());
+    GameObject.Find("GameManager").GetComponent<GameManager>().startGame();
   }
 
   /// <summary>
@@ -113,6 +116,7 @@ public class UIManager : MonoBehaviour
     helpButton.gameObject.SetActive(false);
     helpText.SetActive(false);
     healthUI.SetActive(false);
+    waveTimer.SetActive(false);
   }
 
   public void showTurretOptions(string turretName)
@@ -146,5 +150,9 @@ public class UIManager : MonoBehaviour
   private void HandleHealthChanged(float pct)
   {
     playerHealthForeground.fillAmount = pct;
+  }
+
+  public void updateTimer(int current) {
+    waveTimer.GetComponent<Text>().text = "Nächste Wave in: " + current + " Sekunden";
   }
 }

@@ -11,11 +11,13 @@ public class Hunt : MonoBehaviour
   [SerializeField]
   private bool isPaused = false;
 
-  public GameObject target;
+  [SerializeField]
+  private GameObject target;
 
   private void Start()
   {
     agent = gameObject.GetComponent<NavMeshAgent>();
+    target = GameObject.FindGameObjectWithTag("Finish");
   }
 
   private void Update()
@@ -38,6 +40,8 @@ public class Hunt : MonoBehaviour
     {
       GameObject gameManager = GameObject.Find("GameManager");
       gameManager.GetComponent<PlayerHealth>().ModifyHealth(-1);
+      gameManager.GetComponent<GameManager>().reduceNPC();
+      Destroy(gameObject);
     }
   }
 

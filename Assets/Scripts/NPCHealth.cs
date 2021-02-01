@@ -6,21 +6,35 @@
 public class NPCHealth : MonoBehaviour
 {
   [SerializeField]
-  private int maxHealth = 20;
+  private int maxHealth = 6;
 
   private int currentHealth;
 
   private Renderer rend;
 
-  private void Start()
+  private bool isTriggerActive = false;
+
+  private void Awake()
   {
     currentHealth = maxHealth;
     rend = GetComponent<Renderer>();
   }
 
+  public void boostNPC(int amount) {
+    maxHealth += amount;
+    currentHealth = maxHealth;
+    Debug.Log("Neuer Max Health: " + maxHealth);
+  }
+  public int getCurrentHealth() {
+    return currentHealth;
+  }
+
   private void OnTriggerEnter(Collider other)
   {
-    // if NPC collides with a weapon NPC gets damaged or dies
+    if (!isTriggerActive)
+    {
+      isTriggerActive = true;
+       // if NPC collides with a weapon NPC gets damaged or dies
     if (other.gameObject.tag == "Weapon")
     {
       currentHealth -= 1;
@@ -31,7 +45,7 @@ public class NPCHealth : MonoBehaviour
         // TODO mit Waves muss das wo anders stehen, Game erst verloren wenn alle NPCs tot sind
         GameObject gameManager = GameObject.Find("GameManager");
         gameManager.GetComponent<GameManager>().ModifyPlayerMoney(10);
-        gameManager.GetComponent<UIManager>().GameWon();
+        gameManager.GetComponent<GameManager>().reduceNPC();
       } else if (healthPct > 0.5f)
       {
         // set NPC color to green if npcHealth is > 50%
@@ -46,5 +60,9 @@ public class NPCHealth : MonoBehaviour
         rend.material.color = Color.red;
       }
     }
+    }
+  }
+  private void OnTriggerExit(Collider other) {
+    isTriggerActive = false;
   }
 }

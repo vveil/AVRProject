@@ -11,11 +11,13 @@ public class UIManager : MonoBehaviour
 {
   // UI-Elements to be assigned through the inspector
   public Button startButton;
+  public Image startImage;
   public Button helpButton;
   public GameObject startText;
+  public Image helpTextBackground;
   public GameObject helpText;
   public GameObject playerMoneyText;
-  public Button restartButton;
+  //public Button restartButton;
   public GameObject gameOverText;
   public GameObject gameWonText;
   public Image playerHealthForeground;
@@ -36,6 +38,7 @@ public class UIManager : MonoBehaviour
     startButton.gameObject.SetActive(true);
     startButton.onClick.AddListener(StartGame);
     startText.SetActive(true);
+    startImage.gameObject.SetActive(true);
   }
 
   /// <summary>
@@ -46,6 +49,7 @@ public class UIManager : MonoBehaviour
     Time.timeScale = 1f;
     startButton.gameObject.SetActive(false);
     startText.SetActive(false);
+    startImage.gameObject.SetActive(false);
 
     helpButton.gameObject.SetActive(true);
     helpButton.onClick.AddListener(ToggleHelp);
@@ -56,10 +60,11 @@ public class UIManager : MonoBehaviour
   }
 
   /// <summary>
-  /// Toggling visibilty of helpText
+  /// Toggling visibilty of help
   /// </summary>
   private void ToggleHelp()
   {
+    helpTextBackground.gameObject.SetActive(!helpTextBackground.gameObject.activeSelf);
     helpText.SetActive(!helpText.activeSelf);
   }
 
@@ -71,7 +76,7 @@ public class UIManager : MonoBehaviour
     disableGameUI();
     Time.timeScale = 0f;
     //restartButton.onClick.AddListener(RestartGame);
-    restartButton.gameObject.SetActive(true);
+    //restartButton.gameObject.SetActive(true);
     gameOverText.SetActive(true);
   }
 
@@ -84,7 +89,7 @@ public class UIManager : MonoBehaviour
     disableGameUI();
     Time.timeScale = 0f;
     //restartButton.onClick.AddListener(RestartGame);
-    restartButton.gameObject.SetActive(true);
+    //restartButton.gameObject.SetActive(true);
     gameWonText.SetActive(true);
   }
 

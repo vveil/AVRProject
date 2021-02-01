@@ -131,6 +131,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90eb2d8906bb540aa94228e163ed01f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damage: 5
+  upgradedMaterial: {fileID: 2100000, guid: bb98b4fbb0a424c8191990fe580ecad1, type: 2}
 --- !u!1 &1310229360435523025
 GameObject:
   m_ObjectHideFlags: 0

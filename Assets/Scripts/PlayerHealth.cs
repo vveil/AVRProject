@@ -19,9 +19,9 @@ public class PlayerHealth : MonoBehaviour
   }
 
   /// <summary>
-  /// Modify the players health
+  /// Modifiziert die aktuellen Lebenspunkte des Spielers
   /// </summary>
-  /// <param name="amount"> will be added to current health</param>
+  /// <param name="amount">wird zu currentHeath addiert</param>
   public void ModifyHealth(int amount)
   {
     currentHealth += amount;

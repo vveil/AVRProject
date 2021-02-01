@@ -27,7 +27,7 @@ public class GameManager : MonoBehaviour
 
   [SerializeField]
   private int waveCount = 4;
-  
+
   [SerializeField]
   private bool waveActive = false;
 
@@ -110,80 +110,110 @@ public class GameManager : MonoBehaviour
     return playerMoney;
   }
 
+  /// <summary>
+  /// Verwaltet das Verkaufen von Türmen
+  /// </summary>
+  /// <param name="turretName">Name des zu verkaufenden Turms</param>
   public void handleSellTurret(string turretName)
   {
-    Debug.Log("Deactivating " + turretName);
     GameObject.Find(turretName).SetActive(false);
     ModifyPlayerMoney(10);
   }
 
+  /// <summary>
+  /// Verwaltete das Upgraden von Türmen
+  /// </summary>
+  /// <param name="turretName">Name des upzugradenen Turms</param>
   public void handleUpgradeTurret(string turretName)
   {
     Debug.Log("Upgrading " + turretName);
     if (playerMoney - 20 >= 0)
     {
+      GameObject.Find(turretName).GetComponent<Turret>().Upgrade();
       ModifyPlayerMoney(-20);
     }
   }
 
-  public void startGame() {
+  /// <summary>
+  /// set startGame to true
+  /// </summary>
+  public void startGame()
+  {
     gameIsStarted = true;
   }
 
-  public void waveControl() {
+  /// <summary>
+  /// Kontrolliert und verwaltet die verschiedenen Waves
+  /// </summary>
+  public void waveControl()
+  {
     if (waveActive)
     {
       return;
-    } else
+    }
+    else
     {
       if (npcAlive > 0)
       {
         return;
-      } else
+      }
+      else
       {
-        if (waveCount == 0 && GetComponent<PlayerHealth>().getCurrentHealth() > 0)
+        if (waveCount <= 0 && GetComponent<PlayerHealth>().getCurrentHealth() > 0)
         {
-          Debug.Log("Game Gewonnen, weil keine Wave und keine Gegner mehr über!");
           GetComponent<UIManager>().GameWon();
           return;
         }
-        Debug.Log("Keiner Gegner oder Wave aktiv, neue Runde startet!");
         waveActive = true;
         StartCoroutine(waveTimer(waveWaitTimer));
       }
     }
   }
 
-  IEnumerator waveTimer(int timer) {
-    while(timer > 0)
+  /// <summary>
+  /// Verwaletet den Timer zur nächsten Wave
+  /// </summary>
+  /// <param name="timer">Aktueller Timer</param>
+  /// <returns>Zu wartende Sekunden</returns>
+  IEnumerator waveTimer(int timer)
+  {
+    while (timer > 0)
     {
       timer--;
-      Debug.Log("Nächste Wave in: " + timer + " Sekunden");
       GetComponent<UIManager>().updateTimer(timer);
       yield return new WaitForSeconds(1);
     }
     StartCoroutine(spawnNPC(npcCount));
-  }  
+  }
 
-  IEnumerator spawnNPC(int count) {
+  /// <summary>
+  /// Ruft in regelmäígen Abständen placeNPC() auf um einen NPC zu erzeugen
+  /// </summary>
+  /// <param name="count">Anzahl der noch zu setzenden NPCs</param>
+  /// <returns></returns>
+  IEnumerator spawnNPC(int count)
+  {
     npcAlive = 0;
-    while(count>0)
+    while (count > 0)
     {
-       count--;
-         placeNPC();
-         yield return new WaitForSeconds(2);
+      count--;
+      placeNPC();
+      yield return new WaitForSeconds(2);
     }
     waveCount--;
-    Debug.Log("Noch: " + waveCount + " Wellen zum Sieg!");
     waveActive = false;
   }
 
-  public void placeNPC() {
+  /// <summary>
+  /// Verwaltet das Setzen eines NPCs
+  /// </summary>
+  public void placeNPC()
+  {
     GameObject start = GameObject.FindGameObjectWithTag("Start");
     Transform trans = start.transform;
     Vector3 pos = trans.position;
     GameObject temp = Instantiate(npc, new Vector3(pos.x, pos.y + 0.1f, pos.z), trans.rotation);
-    npcBoostAmount = 12/waveCount * 2;
+    npcBoostAmount = 12 / waveCount * 2;
     Debug.Log("BoostAmount: " + npcBoostAmount);
     temp.GetComponent<NPCHealth>().boostNPC(npcBoostAmount);
     npcAlive++;
@@ -191,40 +221,37 @@ public class GameManager : MonoBehaviour
     Debug.Log("Aktuell: " + npcAlive + " Gegner am leben.");
   }
 
-  // public void boostNPC() {
-  //   npc.GetComponent<NPCHealth>().boostNPC(npcBoostAmount);
-  // }
-
-  public void reduceNPC() {
+  /// <summary>
+  /// Reduziert die Anzahl der lebenden NPCs (aufrufen, wenn NPC zerstört oder im Ziel)
+  /// </summary>
+  public void reduceNPC()
+  {
     npcAlive--;
-    Debug.Log("Gegner hat das Ziel erreicht oder wurde zerstört, es verbleiben: " + npcAlive );
   }
 
   private void Update()
   {
     // map place
-    if (gameIsStarted) 
+    if (gameIsStarted)
     {
-        waveControl();
+      waveControl();
     }
 
     if (isPlaced)
+    {
+      if (!isNPCPathComplete())
       {
-        if (!isNPCPathComplete())
-        {
-          //Debug.Log("Destroying Turret cause it is blocking NPC way");
-         instantiatedTurret.SetActive(false);
-        }
-        else
-        {
-          //Debug.Log("Activating Turret");
-          foreach (MeshRenderer meshRenderer in meshRenderers)
-          {
-            meshRenderer.enabled = true;
-          }
-          ModifyPlayerMoney(-20);
-        }
-        isPlaced = false;
+        instantiatedTurret.SetActive(false);
       }
+      else
+      {
+        foreach (MeshRenderer meshRenderer in meshRenderers)
+        {
+          meshRenderer.enabled = true;
+        }
+        ModifyPlayerMoney(-20);
+      }
+      isPlaced = false;
+    }
   }
 }

@@ -9,7 +9,7 @@ using UnityEngine.SceneManagement;
 /// </summary>
 public class UIManager : MonoBehaviour
 {
-  // UI-Elements to be assigned through the inspector
+  // UI-Elemente die im Inspektor zugewiesen werden müssen
   public Button startButton;
   public Image startImage;
   public Button helpButton;
@@ -17,7 +17,6 @@ public class UIManager : MonoBehaviour
   public Image helpTextBackground;
   public GameObject helpText;
   public GameObject playerMoneyText;
-  //public Button restartButton;
   public GameObject gameOverText;
   public GameObject gameWonText;
   public Image playerHealthForeground;
@@ -43,7 +42,7 @@ public class UIManager : MonoBehaviour
   }
 
   /// <summary>
-  /// Handling UI when app is started. Activating "Start UI"
+  /// Verwaltet UI bei App-Start.
   /// </summary>
   private void StartGame()
   {
@@ -63,7 +62,7 @@ public class UIManager : MonoBehaviour
   }
 
   /// <summary>
-  /// Toggling visibilty of help
+  /// Togglet Sichtbarkeit der Hilfe
   /// </summary>
   private void ToggleHelp()
   {
@@ -72,39 +71,28 @@ public class UIManager : MonoBehaviour
   }
 
   /// <summary>
-  /// Handling UI when game is lost
+  /// Handelt UI wenn Spieler verloren hat
   /// </summary>
   public void GameLost()
   {
     disableGameUI();
     Time.timeScale = 0f;
-    //restartButton.onClick.AddListener(RestartGame);
-    //restartButton.gameObject.SetActive(true);
     gameOverText.SetActive(true);
   }
 
   /// <summary>
-  /// Handling UI when game is won
+  /// Handelt UI wenn Spieler gewonnen hat
   /// </summary>
   public void GameWon()
   {
-    // TODO Call this function when all NPC are dead!
     disableGameUI();
     Time.timeScale = 0f;
-    //restartButton.onClick.AddListener(RestartGame);
-    //restartButton.gameObject.SetActive(true);
     gameWonText.SetActive(true);
   }
 
-  // TODO delete this function is its not used
-  //private void RestartGame()
-  //{
-  //  // Restart game somehow
-  //}
-
-  /*
-   * Make playerMoney visible in the UI
-   */
+  /// <summary>
+  /// Sorgt fürs Anzeigen der Münzen des Spielers
+  /// </summary>
   public void showMoneyText(int money)
   {
     string coinsString = "Coins: " + money;
@@ -113,7 +101,7 @@ public class UIManager : MonoBehaviour
   }
 
   /// <summary>
-  /// Disable the In-game UI
+  /// Deaktiviert die in-game UI
   /// </summary>
   private void disableGameUI()
   {
@@ -124,7 +112,12 @@ public class UIManager : MonoBehaviour
     waveTimer.SetActive(false);
   }
 
-  public void showTurretOptions(string turretName)
+  /// <summary>
+  /// Handelt das Anzeigen der Optionen bei Touch auf einen Turm
+  /// </summary>
+  /// <param name="turretName">Name des Turms</param>
+  /// <param name="isUpgraded">bool: true -> Turm bereits upgraded; false-> Turm noch nicht upgraded</param>
+  public void showTurretOptions(string turretName, bool isUpgraded)
   {
     upgradeTower.onClick.RemoveAllListeners();
     sellTower.onClick.RemoveAllListeners();
@@ -141,8 +134,13 @@ public class UIManager : MonoBehaviour
     });
     cancelButton.onClick.AddListener(hideTurretOptions);
     towerOptions.SetActive(true);
+    // hide upgrade button if tower is already upgraded
+    upgradeTower.gameObject.SetActive(!isUpgraded);
   }
 
+  /// <summary>
+  /// Sorgt für das Deaktvieren der Upgrade/Sell-Optionen der Türme
+  /// </summary>
   private void hideTurretOptions()
   {
     towerOptions.SetActive(false);
@@ -157,7 +155,12 @@ public class UIManager : MonoBehaviour
     playerHealthForeground.fillAmount = pct;
   }
 
-  public void updateTimer(int current) {
+  /// <summary>
+  /// Sorgt für das Aktualisieren des Timers zum Start der nächsten Wave
+  /// </summary>
+  /// <param name="current">Aktueller Timer</param>
+  public void updateTimer(int current)
+  {
     waveTimer.GetComponent<Text>().text = "Nächste Wave in: " + current + " Sekunden";
   }
 }

@@ -31,7 +31,7 @@ public class Selection : MonoBehaviour
     pos = transform.position;
   }
 
-  private void LateUpdate()
+  private void Update()
   {
     // calculate what the new Y position will be
     float newY = Mathf.Sin(Time.time * swingSpeed) * height + pos.y;

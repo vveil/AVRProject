@@ -2,19 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Verwaltet Aktionen, die ausgeführt werden sollen wenn ein Turm ausgewählt wird
+/// </summary>
 public class Turret : MonoBehaviour
 {
-  void Update()
+  public void handleTurretOptions()
   {
-    for(int i = 0; i < Input.touchCount; ++i)
-    {
-      Touch touch = Input.GetTouch(i);
-      if (touch.phase == TouchPhase.Began)
-      {
-        GameObject gameManager = GameObject.Find("GameManager");
-        Debug.Log("Calling showTurretOptions from Turret.cs");
-        gameManager.GetComponent<UIManager>().showTurretOptions(gameObject);
-      }
-    }
+    GameObject gameManager = GameObject.Find("GameManager");
+    Debug.Log("Calling showTurretOptions from " + gameObject.name);
+    gameManager.GetComponent<UIManager>().showTurretOptions(gameObject.name);
   }
 }

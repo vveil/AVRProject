@@ -4,6 +4,9 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
+/// <summary>
+/// Verwaltet alle UI Elemente während des Spiels
+/// </summary>
 public class UIManager : MonoBehaviour
 {
   // UI-Elements to be assigned through the inspector
@@ -35,9 +38,9 @@ public class UIManager : MonoBehaviour
     startText.SetActive(true);
   }
 
-  /**
-   * Handling UI when app is started. Activating "Start UI"
-   */
+  /// <summary>
+  /// Handling UI when app is started. Activating "Start UI"
+  /// </summary>
   private void StartGame()
   {
     Time.timeScale = 1f;
@@ -52,17 +55,17 @@ public class UIManager : MonoBehaviour
     showMoneyText(GetComponent<GameManager>().getPlayerMoney());
   }
 
-  /**
-   * Toggling visibilty of helpText
-   */
+  /// <summary>
+  /// Toggling visibilty of helpText
+  /// </summary>
   private void ToggleHelp()
   {
     helpText.SetActive(!helpText.activeSelf);
   }
 
-  /**
-   * Handling UI when game is lost
-   */
+  /// <summary>
+  /// Handling UI when game is lost
+  /// </summary>
   public void GameLost()
   {
     disableGameUI();
@@ -72,9 +75,9 @@ public class UIManager : MonoBehaviour
     gameOverText.SetActive(true);
   }
 
-  /*
-   * Handling UI when game is won
-   */
+  /// <summary>
+  /// Handling UI when game is won
+  /// </summary>
   public void GameWon()
   {
     // TODO Call this function when all NPC are dead!
@@ -101,9 +104,9 @@ public class UIManager : MonoBehaviour
     playerMoneyText.SetActive(true);
   }
 
-  /*
-   * Disable the In-game UI
-   */
+  /// <summary>
+  /// Disable the In-game UI
+  /// </summary>
   private void disableGameUI()
   {
     playerMoneyText.SetActive(false);
@@ -112,17 +115,19 @@ public class UIManager : MonoBehaviour
     healthUI.SetActive(false);
   }
 
-  public void showTurretOptions(GameObject turret)
+  public void showTurretOptions(string turretName)
   {
-    Debug.Log("Showing turret options");
+    upgradeTower.onClick.RemoveAllListeners();
+    sellTower.onClick.RemoveAllListeners();
+    cancelButton.onClick.RemoveAllListeners();
     upgradeTower.onClick.AddListener(() =>
     {
-      GetComponent<GameManager>().handleUpgradeTurret(turret);
+      GetComponent<GameManager>().handleUpgradeTurret(turretName);
       hideTurretOptions();
     });
     sellTower.onClick.AddListener(() =>
     {
-      GetComponent<GameManager>().handleSellTurret(turret);
+      GetComponent<GameManager>().handleSellTurret(turretName);
       hideTurretOptions();
     });
     cancelButton.onClick.AddListener(hideTurretOptions);
@@ -131,13 +136,13 @@ public class UIManager : MonoBehaviour
 
   private void hideTurretOptions()
   {
-    Debug.Log("Hiding turret options");
     towerOptions.SetActive(false);
   }
 
-  /*
-   * Handle the changes of playerHealth in the UI
-   */
+  /// <summary>
+  /// Handle the changes of playerHealth in the UI
+  /// </summary>
+  /// <param name="pct">maxHealth des Spielers / currentHealth des Spielers</param>
   private void HandleHealthChanged(float pct)
   {
     playerHealthForeground.fillAmount = pct;

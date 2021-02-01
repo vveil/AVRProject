@@ -1,5 +1,8 @@
 ﻿using UnityEngine;
 
+/// <summary>
+/// Verwaltet die Lebenspunkte der NPCs
+/// </summary>
 public class NPCHealth : MonoBehaviour
 {
   [SerializeField]

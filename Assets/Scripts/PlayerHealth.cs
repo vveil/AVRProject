@@ -1,6 +1,9 @@
 ﻿using System;
 using UnityEngine;
 
+/// <summary>
+/// Verwaltet Lebenspunkte des Spielers
+/// </summary>
 public class PlayerHealth : MonoBehaviour
 {
   [SerializeField]
@@ -15,11 +18,10 @@ public class PlayerHealth : MonoBehaviour
     currentHealth = maxHealth;
   }
 
-  /**
-   * Modify the players health
-   * @param {Int} amount will be added to current health (pass negative value
-   * to reduce currentHealth)
-   * */
+  /// <summary>
+  /// Modify the players health
+  /// </summary>
+  /// <param name="amount"> will be added to current health</param>
   public void ModifyHealth(int amount)
   {
     currentHealth += amount;
@@ -27,7 +29,7 @@ public class PlayerHealth : MonoBehaviour
     float currentHealthPct = (float)currentHealth / (float)(maxHealth);
     OnHealthPctChanged(currentHealthPct);
 
-    if(currentHealth <= 0)
+    if (currentHealth <= 0)
     {
       GetComponent<UIManager>().GameLost();
     }

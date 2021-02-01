@@ -1,7 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
+/// <summary>
+/// Verwaltet Aktionen, die bei Auswahl eines Ground-Objekts ausgeführt werden sollen
+/// </summary>
 public class Selection : MonoBehaviour
 {
   private bool isTurretActive = false;
@@ -27,25 +31,17 @@ public class Selection : MonoBehaviour
     pos = transform.position;
   }
 
-  private void Update()
+  private void LateUpdate()
   {
     // calculate what the new Y position will be
     float newY = Mathf.Sin(Time.time * swingSpeed) * height + pos.y;
     // set the object's Y to the new calculated Y
     transform.position = new Vector3(transform.position.x, newY, transform.position.z);
     transform.Rotate(new Vector3(0.0f, 1.0f, 0.0f) * rotationSpeed * Time.deltaTime);
-    //if (Input.touchCount > 0)
-    //{
     GameObject gameManager = GameObject.Find("GameManager");
     if (!isTurretActive)
     {
-      Debug.Log("Calling instantiateTurret from Selection.cs");
       isTurretActive = gameManager.GetComponent<GameManager>().instantiateTurret(transform);
     }
-    else
-    {
-      //gameManager.GetComponent<UIManager>().showTurretOptions(instantiatedTurret);
-    }
-    //}
   }
 }

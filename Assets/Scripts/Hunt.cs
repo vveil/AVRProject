@@ -1,6 +1,9 @@
 ﻿using UnityEngine;
 using UnityEngine.AI;
 
+/// <summary>
+/// Sorgt dafür, dass NPCs zum Ziel laufen
+/// </summary>
 public class Hunt : MonoBehaviour
 {
   private NavMeshAgent agent;

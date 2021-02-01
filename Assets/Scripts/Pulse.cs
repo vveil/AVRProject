@@ -1,5 +1,8 @@
 ﻿using UnityEngine;
 
+/// <summary>
+/// Sorgt für das Pulsieren der Türme
+/// </summary>
 public class Pulse : MonoBehaviour
 {
     

@@ -12,9 +12,6 @@ public class AddReferencePoint : MonoBehaviour
   ARPointCloudManager arPointCloudManager;
   GameObject gamePrefab = null;
 
-  /// <summary>
-  /// Awake is called when the script instance is being loaded.
-  /// </summary>
   private void Awake()
   {
     arReferencePointManager = GetComponent<ARReferencePointManager>();
@@ -22,6 +19,11 @@ public class AddReferencePoint : MonoBehaviour
     arPointCloudManager = GetComponent<ARPointCloudManager>();
   }
 
+  /// <summary>
+  /// Deaktiviert ARPlane, ARPointCloudManager und setzt das Placement Prefab des ARPlacementInteractable auf null
+  /// </summary>
+  /// <param name="arPlacementInteractable"></param>
+  /// <param name="placedObject"></param>
   public void SetReferencePointAsParent(ARPlacementInteractable arPlacementInteractable, GameObject placedObject)
   {
 
@@ -29,11 +31,6 @@ public class AddReferencePoint : MonoBehaviour
     {
       gamePrefab = arPlacementInteractable.placementPrefab;
     }
-
-    // if (GameObject.FindWithTag("Scorer").GetComponent<ScoreController>().score == 8)
-    // {
-    //     GameObject.FindWithTag("Game").GetComponent<ARSession>().Reset();
-    // }
 
     Vector3 position = placedObject.transform.position;
     Quaternion quaternion = placedObject.transform.rotation;
@@ -56,31 +53,5 @@ public class AddReferencePoint : MonoBehaviour
     }
 
     arPlacementInteractable.placementPrefab = null;
-
-    // GameObject.FindWithTag("MainCamera").GetComponent<Werfen>().gameObjectIsSet = true;
-
   }
-
-  // TODO diese Funktion löschen wenn wir sie nicht verwenden
-  //public void ResetGame()
-  //{
-  //  // GameObject.FindWithTag("Scorer").GetComponent<ScoreController>().score = 0;
-  //  // GameObject.FindWithTag("MainCamera").GetComponent<Werfen>().gameObjectIsSet = false;
-  //  // GameObject.FindWithTag("MainCamera").GetComponent<Werfen>().ballCount = 0;
-  //  // GameObject.FindWithTag("ScoreBoard_Balls").GetComponent<Text>().text = "Würfe: 0";
-  //  // GameObject.FindWithTag("ScoreBoard_Score").GetComponent<Text>().text = "Punkte: 0";
-  //  GameObject.FindWithTag("Game").GetComponent<ARPlacementInteractable>().placementPrefab = gamePrefab;
-  //  foreach (ARPlane plane in arPlaneManager.trackables)
-  //  {
-  //    plane.gameObject.SetActive(true);
-  //  }
-  //  foreach (ARPointCloud pointCloud in arPointCloudManager.trackables)
-  //  {
-  //    pointCloud.gameObject.SetActive(true);
-  //  }
-  //  arPlaneManager.enabled = true;
-  //  arPointCloudManager.enabled = true;
-  //  // GameObject.Find("Debug").GetComponent<Text>().text = GameObject.FindWithTag("Game").GetComponent<ARPlacementInteractable>().placementPrefab.name;
-  //  GameObject.FindWithTag("GameSession").GetComponent<ARSession>().Reset();
-  //}
 }

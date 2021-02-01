@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
+/// <summary>
+/// Verwaltet das Instanziieren und Deaktiveren von Türmen und das playerMoney
+/// </summary>
 public class GameManager : MonoBehaviour
 {
   [SerializeField]
@@ -12,15 +15,16 @@ public class GameManager : MonoBehaviour
   private int playerMoney = 100;
 
   private bool isPlaced = false;
+  private int turretCount = 0;
 
   private GameObject instantiatedTurret;
 
   private MeshRenderer[] meshRenderers;
 
-  /**
-   * Instantiate turret on touched hexagon
-   * @param {Transform} groundTrans Transform-object from touched hexagon
-   */
+  /// <summary>
+  ///  Instantiate turret on touched hexagon
+  ///  @param {Transform} groundTrans Transform-object from touched hexagon
+  /// </summary>
   public bool instantiateTurret(Transform groundTrans)
   {
     Debug.Log("inside instatiateTurret()");
@@ -30,22 +34,26 @@ public class GameManager : MonoBehaviour
     Vector3 pos = groundTrans.position;
     if (getPlayerMoney() - 20 >= 0)
     {
+      ++turretCount;
+      turretClone.name = "Turret " + turretCount;
       instantiatedTurret = Instantiate(turretClone, new Vector3(pos.x, pos.y + 0.1f, pos.z), groundTrans.rotation);
+      //turretCount++;
+      //instantiatedTurret.name = "Turret " + turretCount.ToString();
       meshRenderers = instantiatedTurret.GetComponentsInChildren<MeshRenderer>();
       foreach (MeshRenderer meshRenderer in meshRenderers)
       {
         meshRenderer.enabled = false;
       }
-      Debug.Log("Placed turret");
+      Debug.Log("Placed turret with name: " + instantiatedTurret.name);
       isPlaced = true;
     }
     return isPlaced;
   }
 
-  /**
-   * Check if NPCs path to destination is complete
-   * @return bool true if path complete, false if not
-   */
+  /// <summary>
+  /// Check if NPCs path to destination is complete
+  /// </summary>
+  /// <returns>bool, true if path complete, false if not</returns>
   private bool isNPCPathComplete()
   {
     GameObject[] npcs = GameObject.FindGameObjectsWithTag("NPC");
@@ -65,10 +73,10 @@ public class GameManager : MonoBehaviour
     return true;
   }
 
-  /**
-   * Adds amount to players current money
-   * @param {int} amount Amount that is added to players money, Standard: 10
-   */
+  /// <summary>
+  /// Adds amount to players current money
+  /// </summary>
+  /// <param name="amount">int, amount Amount that is added to players money, Standard: 10</param>
   public void ModifyPlayerMoney(int amount = 10)
   {
     Debug.Log("Adding " + amount + " to playerMoney");
@@ -81,15 +89,16 @@ public class GameManager : MonoBehaviour
     return playerMoney;
   }
 
-  public void handleSellTurret(GameObject turret)
+  public void handleSellTurret(string turretName)
   {
-    Debug.Log("Deactivating " + turret);
-    turret.SetActive(false);
+    Debug.Log("Deactivating " + turretName);
+    GameObject.Find(turretName).SetActive(false);
     ModifyPlayerMoney(10);
   }
 
-  public void handleUpgradeTurret(GameObject turret)
+  public void handleUpgradeTurret(string turretName)
   {
+    Debug.Log("Upgrading " + turretName);
     ModifyPlayerMoney(-20);
   }
 
@@ -99,12 +108,12 @@ public class GameManager : MonoBehaviour
       {
         if (!isNPCPathComplete())
         {
-          Debug.Log("Destroying Turret cause it is blocking NPC way");
+          //Debug.Log("Destroying Turret cause it is blocking NPC way");
          instantiatedTurret.SetActive(false);
         }
         else
         {
-          Debug.Log("Activating Turret");
+          //Debug.Log("Activating Turret");
           foreach (MeshRenderer meshRenderer in meshRenderers)
           {
             meshRenderer.enabled = true;

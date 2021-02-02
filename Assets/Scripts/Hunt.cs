@@ -18,6 +18,7 @@ public class Hunt : MonoBehaviour
   {
     agent = gameObject.GetComponent<NavMeshAgent>();
     target = GameObject.FindGameObjectWithTag("Finish");
+    agent.SetDestination(target.transform.position);
   }
 
   private void Update()
@@ -29,7 +30,6 @@ public class Hunt : MonoBehaviour
     else
     {
       agent.isStopped = false;
-      agent.SetDestination(target.transform.position);
     }
   }
 

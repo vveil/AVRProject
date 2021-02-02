@@ -44,6 +44,7 @@ public class NPCHealth : MonoBehaviour
       // if NPC collides with a weapon NPC gets damaged or dies
       if (other.gameObject.tag == "Weapon")
       {
+        gameObject.GetComponent<AudioSource>().Play();
         currentHealth -= other.gameObject.GetComponentInParent<Turret>().GetDamage();
         float healthPct = (float)currentHealth / (float)maxHealth;
         if (currentHealth <= 0)

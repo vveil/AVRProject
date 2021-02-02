@@ -20,7 +20,7 @@ public class Selection : MonoBehaviour
 
   // adjust this to change how high it goes
   [SerializeField]
-  private float height = 0.025f;
+  private float height = 0.0f;
 
   //private GameObject instantiatedTurret;
 

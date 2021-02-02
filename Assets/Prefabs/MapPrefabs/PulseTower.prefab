@@ -131,7 +131,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90eb2d8906bb540aa94228e163ed01f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 5
+  damage: 2
   upgradedMaterial: {fileID: 2100000, guid: bb98b4fbb0a424c8191990fe580ecad1, type: 2}
 --- !u!1 &1310229360435523025
 GameObject:
@@ -160,7 +160,7 @@ Transform:
   m_GameObject: {fileID: 1310229360435523025}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 0.8, z: 1}
   m_Children:
   - {fileID: 5484074549389511930}
   m_Father: {fileID: 4552233530859582541}

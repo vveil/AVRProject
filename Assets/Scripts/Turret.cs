@@ -9,7 +9,7 @@ public class Turret : MonoBehaviour
 {
 
   [SerializeField]
-  private int damage = 5;
+  private int damage = 2;
 
   public Material upgradedMaterial;
 
@@ -29,7 +29,7 @@ public class Turret : MonoBehaviour
   /// </summary>
   public void Upgrade()
   {
-    damage = 10;
+    damage = 4;
     isUpgraded = true;
     GetComponentInChildren<MeshRenderer>().material = upgradedMaterial;
   }

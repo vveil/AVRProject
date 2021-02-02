@@ -15,7 +15,7 @@ public class GameManager : MonoBehaviour
   private GameObject npc;
 
   [SerializeField]
-  private int playerMoney = 200;
+  private int playerMoney = 100;
 
   [SerializeField]
   private int npcCount = 5;

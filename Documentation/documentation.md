@@ -51,7 +51,7 @@ Die verschiedenen Funktionen der App wurden im Verlauf der Entwicklung mehrfach 
 Um festzustellen, ob das UI und die Verwendung der App intuitiv ist, wurde die App 2 Kommilitonen gezeigt, welche ohne weitere Erklärungen das Spiel spielen sollten. Dabei kam heraus, dass einem der Kommilitonen nach dem Druck auf `Start` nicht klar war, wie er die Map platzieren kann. Aufgrund dessen wurde ein ?-`Button` hinzugefügt. Bei Druck auf den Button erscheint eine kurze Anleitung, wie das Spiel funktioniert. Der andere Kommilitone fand sich direkt im Spiel zurecht.
 
 ## Fazit
-Abschließend lässt sich sagen, dass zwar nicht alle Elemente aus der Vision des Projekts umgesetzt werden konnten, es aber dennoch ein erfolgreiches Projekt geworden ist. Es wurde ein AR Tower Defense Spiel erstellt, welches zum Abschluss des Projekts spielbar ist. Durch die praktische Umsetzung des Projekts konnte viel im Bereich UI und NavMesh & AI gelernt werden.
+Abschließend lässt sich sagen, dass zwar nicht alle Elemente aus der Vision des Projekts umgesetzt werden konnten, es aber dennoch ein erfolgreiches Projekt geworden ist. Es wurde ein AR Tower Defense Spiel erstellt, welches zum Abschluss des Projekts spielbar ist. Durch die praktische Umsetzung des Projekts konnte viel im Bereich UI und NavMesh & AI gelernt werden. Die Aufteilung der Arbeit zwischen den Entwicklern hat während des Projekts ingesamt gut geklappt, wobei Niklas Werner ca. 60% der Arbeit und Dennis Pribe ca. 40% der Arbeit geleistet hat.
 
 ## Linksammlung
 [Einrichtungshinweise](./README.md)  

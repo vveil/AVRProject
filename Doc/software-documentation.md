@@ -8,5 +8,9 @@ Die Klassen teilen sich in 3 übergeordnete Packages, Logic & UI, NPC & Player u
 Alle NPCs und Türme haben `Collider`, durch die registriert wird, ob ein NPC mit einem Turm kollidiert. Geschieht dies, werden dem NPC Lebenspunkte abgezogen. Wurde ein NPC von einem Turm zerstört (NPC hat 0 oder weniger Lebenspunkte), wird der instanziierte NPC zerstört und der Spieler erhält etwas In-Game-Währung. Die "Finish"-Fläche der Map hat ebenfalls einen `Collider`. Kollidieren NPCs mit diesem `Collider` werden sie zerstört und dem Spieler werden Lebenspunkte abgezogen. Die `OnTriggerEnter(Collider)`-Funktion aus der Klasse `MonoBehaviour` wird in der Klasse `NPCHealth` so überschrieben, dass beim Triggern durch einen anderen `Collider` geprüft wird, ob es sich um eine `Weapon` handelt. Ist dies der Fall verliert der NPC Lebenspunkte.  
 Die vorangegangene Beschreibung stellt beispielhaft dar, wie die verschiedenen Klassen und `GameObjects` im Projekt miteinander interagieren. Die gesamte Logik hier in Textform auszuführen würde zu weit führen und ist besser direkt im Quellcode, anhand von Klassen- und Funktionennamen sowie Code-Kommentaren nachzuvollziehen.
 
+## Ordnerstruktur
+In dem Projektordner sind folgende Ordner zu finden: Assets, Library, Logs, Packages, Doc, ProjectSettings, Temp, executable, HexagonGrids und obj.  
+Die für die Weiterentwicklung wichtigsten Ordner sind Assets, Doc und executable. Im Assests-Ordner befinden sich alle verwendeten Assets, Prefabs, Szenen, Sprites, Skripte und Ähnliches. Alle Skripte liegen im Ordner `Assets > Scripts`. Prefabs zur Map, UI, Towern und NPCs befinden sich im Ordner `Assets > Prefabs` etc.. Im executable-Ordner befinden sich ein Executable des Projekts in Form einer `.apk`. Im Doc-Ordner befinden sich alle Dokumente, die zur Dokumentation gehören.
+
 ## Weitere Dokumentation
 Für weitere Software-Dokumentation und genauere Beschreibung spezieller Funktionen bitte die Kommentare im Quellcode beachten.

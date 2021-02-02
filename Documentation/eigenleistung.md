@@ -25,6 +25,7 @@
     * Wall
     * AI Player
     * PulseWeapon
+    * upgradedWeapon
     * selected
 * Sprites
     * healthbarforeground

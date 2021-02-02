@@ -28,7 +28,6 @@ public class NPCHealth : MonoBehaviour
   {
     maxHealth += amount;
     currentHealth = maxHealth;
-    Debug.Log("Neuer Max Health: " + maxHealth);
   }
 
   public int getCurrentHealth()
@@ -72,6 +71,7 @@ public class NPCHealth : MonoBehaviour
       }
     }
   }
+
   private void OnTriggerExit(Collider other)
   {
     isTriggerActive = false;
